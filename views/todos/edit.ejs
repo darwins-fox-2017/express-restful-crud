@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+<body>
+
+    <!-- Following Menu -->
+
+    <!-- Page Contents -->
+    <div class="pusher">
+        <div class="ui vertical stripe segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="eight wide column">
+                        <h3 class="ui header">Create new Todo</h3>
+                        <form class="ui form wide" action="/todos/<%= item.id%>/update" method="post" >
+                            <div class="field">
+                                <label>Name</label>
+                                <input name="name" placeholder="Name" type="text" value="<%= item.name%>">
+                            </div>
+                            <div class="field">
+                                <label>Completed ?</label>
+                                <input name="completed" placeholder="Completed ?" value="<%= item.email %>">
+                            </div>
+                            <div class="field">
+                                <label>User Id ?</label>
+                                <input name="user_id" placeholder="User Id ?" value="<%= item.user_id %>">
+                            </div>
+                            <button class="ui button" type="submit">Update Todo</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include ../partials/footer %>
+
+</body>
+
+</html>

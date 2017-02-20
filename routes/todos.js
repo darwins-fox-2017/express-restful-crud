@@ -4,78 +4,86 @@ var router = express.Router();
 let db = require('../models')
 let faker = require('faker')
 
-/* GET users listing. */
+/* GET todos listing. */
 router.get('/', function(req, res, next) {
-  db.User.findAll().then(users => {
-    res.render('users/index', {result: users})
+  db.Todo.findAll().then(todos => {
+    res.render('todos/index', {result: todos})
   })
   // res.send('respond with a resource');
 });
 
 router.get('/create', function(req, res, next){
-  res.render('users/create')
+  res.render('todos/create')
 })
 
 router.post('/create', function(req, res, next){
-  db.User.create({
+  db.Todo.create({
     name: req.body.name,
-    email: req.body.email
+    completed: req.body.completed,
+    user_id: req.body.user_id
   })
-  res.redirect('/users')
+  res.redirect('/todos')
 })
 
 router.post('/:id/update', function(req, res, next){
-  db.User.update({
+  db.Todo.update({
     name: req.body.name,
-    email: req.body.email
+    completed: req.body.completed,
+    user_id: req.body.user_id
   },{
     where: {
       id: req.params.id
     }
   }).then(() => {
-    res.redirect('/users')
+    res.redirect('/todos')
   })
 })
 
 router.get('/:id/delete', function(req, res, next){
-  db.User.destroy({
+  db.Todo.destroy({
     where: {
       id : req.params.id
     }
   }).then(() => {
-    res.redirect('/users')
+    res.redirect('/todos')
 
   })
 })
 
 router.get('/:id', function(req, res, next){
-  db.User.find({
+  db.Todo.find({
     where : {
       id: req.params.id
     }
-  }).then(user => {
-    res.render('users/show', {user: user})
+  }).then(item => {
+    res.render('todos/show', {item: item})
   })
 })
 
 router.get('/:id/edit', function(req, res, next){
-  db.User.find({
+  db.Todo.find({
     where: {
       id: req.params.id
     }
-  }).then(function(user){
-    res.render('users/edit', {user: user})
+  }).then(function(item){
+    res.render('todos/edit', {item: item})
   })
 })
 
 router.get('/seed/:amont', function(req, res, next){
   for (let i = 0; i < req.params.amont; i++) {
-    db.User.create({
-      name: faker.name.findName(),
-      email: faker.internet.email()
+    db.Todo.create({
+      name: faker.lorem.words(),
+      completed: faker.random.boolean(),
+      user_id: randomIntFromInterval(1, 100)
     })
   }
-  res.redirect('/users')
+  res.redirect('/todos')
 })
+
+function randomIntFromInterval(min,max)
+{
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
 
 module.exports = router;

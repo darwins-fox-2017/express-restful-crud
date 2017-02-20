@@ -1,0 +1,66 @@
+<% include ../partials/header %>
+<body>
+
+    <!-- Following Menu -->
+
+    <!-- Page Contents -->
+    <div class="pusher">
+
+        <div class="ui vertical stripe segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="two wide column">
+                        <h3 class="ui header">All Todos </h3>
+
+                    </div>
+                    <div class="four wide column right">
+                        <a href="/todos/create" class="ui basic button">
+                          <i class="icon user"></i>
+                          Add Todo
+                        </a>
+                    </div>
+                  </div>
+                  <div class="row">
+
+                    <table class="ui celled table" id="example">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Task Name</th>
+                                <th>Completed ?</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% result.forEach(function(item){  %>
+                                <tr>
+                                    <td>
+                                        <%= item.id %>
+                                    </td>
+                                    <td>
+                                        <%= item.name %>
+                                    </td>
+                                    <td>
+                                        <%= item.completed %>
+                                    </td>
+                                    <td>
+                                        <div class="ui icon buttons">
+                                            <a href="/todos/<%= item.id %>" class="ui button"><i class="unhide icon"></i></a>
+                                            <a href="/todos/<%= item.id %>/edit" class="ui button"><i class="edit icon"></i></a>
+                                            <a href="/todos/<%= item.id %>/delete" class="ui button"><i class="trash icon"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <% include ../partials/footer %>
+
+</body>
+
+</html>
