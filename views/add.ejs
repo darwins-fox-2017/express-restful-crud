@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/add" method="post">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input name="title" type="text" class="form-control" placeholder="add task">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <br>
+        <select name="UserId" class="">
+          <% for (var i=0;i < todo.length;i++) { %>
+          <option value="<%= todo[i].User.email %>"><%= todo[i].User.email %></option>
+          <% } %>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-danger"><a href="/">Cancel</a></button>
+      <button type="submit" value="Submit" class="btn btn-success">Add</button>
+    </form>
+  </body>
+</html>
