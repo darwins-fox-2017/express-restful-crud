@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p><a href="/users">Tambah Data</a></p>
+
+    <table>
+      <tr>
+        <td>Email</td>
+        <td>Title</td>
+        <td>Status</td>
+        <td>Create At</td>
+        <td>Edit</td>
+      </tr>
+      <% for(var i = 0; i < memo.length; i++) { %>
+        <tr>
+          <td><%= memo[i].email %></td>
+          <td><%= memo[i].title %></td>
+          <td><%= memo[i].status %></td>
+          <td><%= memo[i].createdAt %></td>
+          <td><a href="users/edit/<%= memo[i].id %>">Edit</a></td>
+        </tr>
+        <% } %>
+    </table>
+
+
+</body>
+</html>

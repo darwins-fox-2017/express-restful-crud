@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1><p><a href="/">Kembali</a></p>
+    <p><%= title %></p>
+
+    <form action="/users/create" method="POST">
+      Email
+      <input type="text" name="email">
+
+      Title
+      <input type="text" name="title">
+      Status
+      <input type="text" name="status">
+      <input type="submit" name="submit">
+    </form>
+
+  </body>
+</html>
