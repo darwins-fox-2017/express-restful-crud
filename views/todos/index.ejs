@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MEMO</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+        <div class="well">Users</div>
+        <div class="users">
+            <% for(var i = 0;i < users.length;i++) { %>
+                <ul>
+                    <li><%= users[i].email %> 
+                    <a href="/todos/edituser/<%= users[i].id %>">Edit</a></li>
+                    <a onclick="return confirm('Are you sure')" href="/todos/deleteuser/<%= users[i].id %>">Delete</a></li>
+                </ul> 
+            <% } %>
+        </div>
+        <form action="/todos/createuser" method="POST">
+            Add User Email : <input type="text" name="userEmail">
+            <input type="submit" value="Add">
+        </form>
+        <div class="well">MEMO</div>
+        <div class="todos">
+            <% for(var i = 0;i < todos.length;i++) { %>
+            <ul>
+                <li><%= todos[i].title %> from <%= todos[i].User.email %>
+                <a href="/todos/delete/<%= todos[i].id %>" onclick="return confirm('Are you sure?')">Delete</a>
+                <a href="/todos/edit/<%= todos[i].id %>" >Edit</a>
+
+                    <ul>
+                        <li><% if(todos[i].is_complete){ %> Complete <% } else { %> Uncomplete <% } %></li> 
+                        <li><%= todos[i].convertDateFormat() %></li> 
+                        <input type="hidden" name="UserId">
+                    </ul> 
+                </li>
+            </ul> 
+            <% } %>
+        </div>
+        <form action="/todos/create" method="POST">
+            Add Memo : <input type="text" name="title">
+            As : 
+            <select name="UserId">
+                <% for(var i = 0;i < users.length;i++ ) { %>
+                    <option value="<%= users[i].id %>"><%= users[i].email %></option>
+                <% } %>
+            </select>
+            <input type="submit" value="Add">
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+        
