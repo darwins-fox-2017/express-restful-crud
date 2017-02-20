@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <a href =memos/new > create new </a>
+    <table>
+      <% for(var i=0; i < memos.length; i++) { %>
+   <tr>
+     <td><%= memos[i].email %>Email</td>
+     <td><%= memos[i].title %>Title</td>
+     <td><%= memos[i].iscomplete %>Status</td>
+   </tr>
+    <% } %>
+</table>
+</form>
+</html>
