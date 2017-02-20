@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 let db = require('../models')
+let faker = require('faker')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -23,14 +24,16 @@ router.post('/create', function(req, res, next){
   res.redirect('/users')
 })
 
-router.post('/update', function(req, res, next){
-  let update = req.body
-  db.User.find({
+router.post('/:id/update', function(req, res, next){
+  db.User.update({
+    name: req.body.name,
+    email: req.body.email
+  },{
     where: {
       id: req.params.id
     }
-  }).then(user => {
-    return updateAttributes(update)
+  }).then(() => {
+    res.redirect('/users')
   })
 })
 
@@ -66,7 +69,13 @@ router.get('/:id/edit', function(req, res, next){
 })
 
 router.get('/seed/:amont', function(req, res, next){
-    db.User.create({})
+  for (let i = 0; i < req.params.amont; i++) {
+    db.User.create({
+      name: faker.name.findName(),
+      email: faker.internet.email()
+    })
+  }
+  res.redirect('/users')
 })
 
 module.exports = router;
