@@ -12,23 +12,23 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    // return queryInterface.bulkInsert('Users', [
-    //   {
-    //   email: 'irwin@pratajaya.com',
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    //   },
-    //   {
-    //   email: 'endy@pratajaya.com',
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    //   },
-    //   {
-    //   email: 'daniel@pratajaya.com',
-    //   createdAt: new Date(),
-    //   updatedAt: new Date()
-    //   }
-    // ])
+    return queryInterface.bulkInsert('Users', [
+      {
+      email: 'irwin@pratajaya.com',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      },
+      {
+      email: 'endy@pratajaya.com',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      },
+      {
+      email: 'daniel@pratajaya.com',
+      createdAt: new Date(),
+      updatedAt: new Date()
+      }
+    ])
   },
 
   down: function (queryInterface, Sequelize) {

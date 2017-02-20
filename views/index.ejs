@@ -8,7 +8,7 @@
   <body>
     <h1><%= title %></h1>
     <form>
-      <button type="submit" class="btn btn-default"> <a href="/add/">Add</a> </button>
+      <a href="/add/" class="btn btn-default">Add</a> </button>
     </form>
 
     <table class="table">
@@ -31,7 +31,8 @@
           <!-- <td><%= JSON.stringify(todo[i].toJSON()) %></td> -->
           <td><%= todo[i].User.email %></td>
           <td><%= todo[i].createdAt %></td>
-          <td><button type="submit" name="submit" class="btn btn-info">update</button>  <button type="submit" name="submit" class="btn btn-danger">delete</button> </td>
+          <td><a href="/update/<%= todo[i].id %>" class="btn btn-info">update</a>
+             <a href="/delete/<%= todo[i].id %>" onclick="popup(<%= todo[i].id %>)" class="btn btn-danger">delete</a> </td>
         </tr>
         <% } %>
       </tbody>
