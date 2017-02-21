@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="title" style="text-align: center;">
+          <h1><%= title %></h1>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading"><center><strong>Table Todo</strong></center></div>
+          <table class="table" border="1">
+            <tr>
+              <th><center>ID</th>
+              <th><center>Title</th>
+              <th><center>Create</th>
+              <th><center>Completed</th>
+              <td><center>Email</td>
+              <th><center>Action</th>
+            </tr>
+            <% for (var i=0; i<todoData.length; i++) {%>
+              <tr>
+                <td><center><%= todoData[i].id %></td>
+                <td><%= todoData[i].title %></td>
+                <td><%= todoData[i].createdAt.toUTCString() %></td>
+                <td><center><%= todoData[i].is_complete %></td>
+                <td><%= todoData[i].user.email %></td>
+                <td>
+                  <center>
+                  <button type="submit" class="btn-group btn-group-xs"><a href = "/update/<%= todoData[i].id %>">Edit<a/></button>
+                  <button type="submit" class="btn-group btn-group-xs"><a href = "/delete/<%= todoData[i].id %>" onclick="return confirm('Are you sure?')">Delete<a/></button>
+                </td>
+              </tr>
+            <% } %>
+        </table>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading"><center><strong>Create Todo List</strong></center></div>
+          <form action="/add" method="post">
+            <div class="form-group">
+              <label for="title">Title:</label><br>
+              <input type="text" name="title" class="form-control" id="title" value="" placeholder="Input todo! (sample: Makan Bakso)">
+            </div>
+            <div class="form-group">
+              <label for="email">Choose Email:</label><br>
+              <select type="text" name="email"><br>
+                <% for (var i=0;i < users.length; i++) {%>
+                  <option value="<%= users[i].id %>"><%= users[i].email %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="is_complete">Complete:</label><br>
+              <select type="text" name="is_complete"><br>
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-default navbar-btn">
+            Submit
+            </button>
+          </form>
+      </div>
+    </div>
+    </div>
+  </div>
+  </body>
+</html>
