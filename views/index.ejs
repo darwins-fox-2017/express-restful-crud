@@ -37,23 +37,34 @@
             <% } %>
         </table>
       </div>
-      <form action="/add" method="post">
-        <div class="form-group">
-          <label for="title">Title:</label><br>
-          <input type="text" name="title" class="form-control" id="title" value="" placeholder="Input todo! (sample: Makan Bakso)">
-        </div>
-        <div class="form-group">
-          <label for="email">Choose Email:</label><br>
-          <select type="text" name="email"><br>
-            <% for (var i=0;i < users.length; i++) {%>
-              <option value="<%= users[i].id %>"><%= users[i].email %></option>
-            <% } %>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-default navbar-btn">
-        Submit
-        </button>
-      </form>
+      <div class="panel panel-default">
+        <div class="panel-heading"><center><strong>Create Todo List</strong></center></div>
+          <form action="/add" method="post">
+            <div class="form-group">
+              <label for="title">Title:</label><br>
+              <input type="text" name="title" class="form-control" id="title" value="" placeholder="Input todo! (sample: Makan Bakso)">
+            </div>
+            <div class="form-group">
+              <label for="email">Choose Email:</label><br>
+              <select type="text" name="email"><br>
+                <% for (var i=0;i < users.length; i++) {%>
+                  <option value="<%= users[i].id %>"><%= users[i].email %></option>
+                <% } %>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="is_complete">Complete:</label><br>
+              <select type="text" name="is_complete"><br>
+                  <option value="true">true</option>
+                  <option value="false">false</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-default navbar-btn">
+            Submit
+            </button>
+          </form>
+      </div>
+    </div>
     </div>
   </div>
   </body>
