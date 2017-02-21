@@ -48,5 +48,24 @@ router.get('/edit/:id', function(req, res, next) {
   })
 })
 
+// delete memo
+// router.get('/delete/:id', function(req, res, next) {
+//   db.Memo.destroy({
+//     where : {
+//       id
+//     }
+//   })
+// })
+
+router.get('/delete/:id', function(req, res) {
+  db.Memo.destroy({
+    where : {
+      id : req.params.id
+    }
+  }).then(function() {
+    res.redirect('/')
+  })
+})
+
 
 module.exports = router;

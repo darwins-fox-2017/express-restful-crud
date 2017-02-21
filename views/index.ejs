@@ -9,13 +9,14 @@
     <p>Welcome to <%= title %></p>
     <p><a href="/users">Tambah Data</a></p>
 
-    <table>
-      <tr>
-        <td>Email</td>
-        <td>Title</td>
-        <td>Status</td>
-        <td>Create At</td>
-        <td>Edit</td>
+    <table id="custom_table" style="width: 80%">
+      <tr style="text-align:center; background:#ccc;">
+        <td style="text-align:center;">Email</td>
+        <td style="text-align:center; padding:10px 30px 10px 30px;">Title</td>
+        <td style="text-align:center; padding:10px 30px 10px 30px;">Status</td>
+        <td style="text-align:center;">Create At</td>
+        <td style="text-align:center;" colspan="2">Custom</td>
+
       </tr>
       <% for(var i = 0; i < memo.length; i++) { %>
         <tr>
@@ -24,6 +25,7 @@
           <td><%= memo[i].status %></td>
           <td><%= memo[i].createdAt %></td>
           <td><a href="users/edit/<%= memo[i].id %>">Edit</a></td>
+          <td><a href="users/delete/<%= memo[i].id %>">Delete</a></td>
         </tr>
         <% } %>
     </table>
