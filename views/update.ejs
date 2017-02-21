@@ -7,12 +7,7 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <form action="/update" method="post">
-      <div class="form-group">
-        <label for="title">ID:</label>
-        <input type="text" name="id" value="<%= todo.id %>" placeholder="ID" readonly="true">
-      </div>
-
+    <form action="/update/<%= todo.id %>" method="post">
       <div class="form-group">
         <label for="title">Title:</label>
         <br>
@@ -23,8 +18,18 @@
         <label for="isComplete">Complete:</label>
         <br>
         <select name="isComplete" class="">
-          <option value="true">done</option>
-          <option value="false">not yet</option>
+          <option value="true"<%= (todo.is_complete) ? ' selected=selected' : '' %>>done</option>
+          <option value="false"<%= (!todo.is_complete) ? ' selected=selected' : '' %>>not yet</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <br>
+        <select name="email" class="">
+          <% for (var i=0;i < users.length;i++) { %>
+          <option value="<%= users[i].id %>"<%= (users[i].id == todo.UserId) ? ' selected=selected' : '' %>><%= users[i].email %></option>
+          <% } %>
         </select>
       </div>
 

@@ -26,8 +26,8 @@
         <label for="email">Email:</label>
         <br>
         <select name="UserId" class="">
-          <% for (var i=0;i < 3;i++) { %>
-          <option value="<%= todo[i].User.id %>"><%= todo[i].User.email %></option>
+          <% for (let i=0;i < users.length;i++) { %>
+          <option value="<%= users[i].id %>"><%= users[i].email %></option>
           <% } %>
         </select>
       </div>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/update" method="post">
+      <input type="hidden" name="id" value="<%= users.id %>">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input name="email" type="email" class="form-control" placeholder="email" value="<%= users.id %>">
+      </div>
+
+      <a href="/users" class="btn btn-danger">Cancel</a>
+      <input type="submit" value="Submit" class="btn btn-success">
+    </form>
+  </body>
+</html>
