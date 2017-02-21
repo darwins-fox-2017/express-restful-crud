@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <form action="/update/<%= todo.id %>" method="post">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <br>
+        <input name="title" type="text" class="form-control" placeholder="update task" value="<%= todo.title %>">
+      </div>
+
+      <div class="form-group">
+        <label for="isComplete">Complete:</label>
+        <br>
+        <select name="isComplete" class="">
+          <option value="true"<%= (todo.is_complete) ? ' selected=selected' : '' %>>done</option>
+          <option value="false"<%= (!todo.is_complete) ? ' selected=selected' : '' %>>not yet</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <br>
+        <select name="email" class="">
+          <% for (var i=0;i < users.length;i++) { %>
+          <option value="<%= users[i].id %>"<%= (users[i].id == todo.UserId) ? ' selected=selected' : '' %>><%= users[i].email %></option>
+          <% } %>
+        </select>
+      </div>
+
+      <a href="/" class="btn btn-danger">Cancel</a>
+      <input type="submit" value="Submit" class="btn btn-success">
+    </form>
+  </body>
+</html>
