@@ -12,7 +12,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       is_complete: {
-        type: Sequelize.STRING
+        type: Sequelize.BOOLEAN
+      },
+      user_id: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
