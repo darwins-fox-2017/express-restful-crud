@@ -6,14 +6,21 @@ let faker = require('faker')
 
 /* GET todos listing. */
 router.get('/', function(req, res, next) {
-  db.Todo.findAll().then(todos => {
+  db.Todo.findAll({
+    include: [
+      db.User
+    ]
+  }).then(todos => {
+    console.log(JSON.stringify(todos))
     res.render('todos/index', {result: todos})
   })
   // res.send('respond with a resource');
 });
 
 router.get('/create', function(req, res, next){
-  res.render('todos/create')
+  db.User.findAll().then((users) => {
+    res.render('todos/create', {users: users})
+    })
 })
 
 router.post('/create', function(req, res, next){
@@ -62,11 +69,15 @@ router.get('/:id', function(req, res, next){
 
 router.get('/:id/edit', function(req, res, next){
   db.Todo.find({
+    include: [ db.User ],
     where: {
       id: req.params.id
     }
-  }).then(function(item){
-    res.render('todos/edit', {item: item})
+  }).then(function(todo){
+    db.User.findAll().then((users) => {
+
+      res.render('todos/edit', {todo: todo, users: users})
+    })
   })
 })
 

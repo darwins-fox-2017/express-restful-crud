@@ -10,18 +10,31 @@
                 <div class="row">
                     <div class="eight wide column">
                         <h3 class="ui header">Create new Todo</h3>
-                        <form class="ui form wide" action="/todos/<%= item.id%>/update" method="post" >
+                        <form class="ui form wide" action="/todos/<%= todo.id%>/update" method="post" >
                             <div class="field">
                                 <label>Name</label>
-                                <input name="name" placeholder="Name" type="text" value="<%= item.name%>">
+                                <input name="name" placeholder="Name" type="text" value="<%= todo.name%>">
                             </div>
                             <div class="field">
                                 <label>Completed ?</label>
-                                <input name="completed" placeholder="Completed ?" value="<%= item.email %>">
+                                <input name="completed" placeholder="Completed ?" value="<%= todo.completed %>">
                             </div>
                             <div class="field">
                                 <label>User Id ?</label>
-                                <input name="user_id" placeholder="User Id ?" value="<%= item.user_id %>">
+                                <select name="user_id" class="ui search dropdown">
+                                  <option value="">Select User</option>
+                                  <% users.forEach(function(user){  %>
+                                    <% if(user.id == todo.User.id){ %>
+
+                                      <option value="<%= user.id%>" selected="selected"><%= user.name %></option>
+                                    <% } else { %>
+
+                                      <option value="<%= user.id%>"><%= user.name %></option>
+                                    <% } %>
+
+                                  <% }); %>
+
+                                </select>
                             </div>
                             <button class="ui button" type="submit">Update Todo</button>
                         </form>

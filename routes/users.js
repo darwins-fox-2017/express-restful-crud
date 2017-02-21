@@ -6,8 +6,12 @@ let faker = require('faker')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  db.User.findAll().then(users => {
-    res.render('users/index', {result: users})
+  db.User.findAll({
+    include : [
+      db.Todo
+    ]
+  }).then(users => {
+    res.render('users/index', {result: JSON.stringify(users)})
   })
   // res.send('respond with a resource');
 });
@@ -76,6 +80,14 @@ router.get('/seed/:amont', function(req, res, next){
     })
   }
   res.redirect('/users')
+})
+
+
+router.get('/testing', function(req, res, next){
+  db.User.findAll().then(users => {
+    res.send('fjashf dfjdshf dskjf dsj dfsjfhsjf ', users)
+    // res.render('users/index', {result: users})
+  })
 })
 
 module.exports = router;

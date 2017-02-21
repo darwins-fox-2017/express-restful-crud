@@ -21,17 +21,20 @@
                     </div>
                   </div>
                   <div class="row">
-
                     <table class="ui celled table" id="example">
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Task Name</th>
                                 <th>Completed ?</th>
+                                <th>Empunya Task </th>
+                                <th>Created At </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
+
                         <tbody>
+
                             <% result.forEach(function(item){  %>
                                 <tr>
                                     <td>
@@ -44,15 +47,23 @@
                                         <%= item.completed %>
                                     </td>
                                     <td>
+                                      <%= item.User.name %>
+
+                                    </td>
+                                    <td>
+                                      <%= helper.beautifyDate(item.createdAt) %>
+                                    </td>
+                                    <td>
                                         <div class="ui icon buttons">
-                                            <a href="/todos/<%= item.id %>" class="ui button"><i class="unhide icon"></i></a>
+                                            <!-- <a href="/todos/<%= item.id %>" class="ui button"><i class="unhide icon"></i></a> -->
                                             <a href="/todos/<%= item.id %>/edit" class="ui button"><i class="edit icon"></i></a>
-                                            <a href="/todos/<%= item.id %>/delete" class="ui button"><i class="trash icon"></i></a>
+                                            <a href="/todos/<%= item.id %>/delete" onclick="return confirm('Are you sure you want to delete this item?');" class="ui button"><i class="trash icon"></i></a>
                                         </div>
                                     </td>
                                 </tr>
                                 <% }); %>
                         </tbody>
+
                     </table>
                 </div>
             </div>

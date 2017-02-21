@@ -21,6 +21,12 @@
                     </div>
                   </div>
                   <div class="row">
+                    <% result.forEach(function(user){  %>
+                    <p>
+                      <%= user.completed %>
+
+                    </p>
+                    <% }); %>
 
                     <table class="ui celled table" id="example">
                         <thead>

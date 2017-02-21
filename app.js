@@ -10,6 +10,7 @@ var users = require('./routes/users');
 var todos = require('./routes/todos')
 
 var app = express();
+app.locals.helper = require('./helpers/app')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +23,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/', index);
 app.use('/users', users);
