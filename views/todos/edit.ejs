@@ -1,0 +1,67 @@
+<% include ../partials/header %>
+
+    <body>
+
+        <!-- Following Menu -->
+
+        <!-- Page Contents -->
+        <div class="pusher">
+            <div class="ui vertical stripe segment">
+                <div class="ui middle aligned stackable grid container">
+                    <div class="row">
+                        <div class="eight wide column">
+                            <h3 class="ui header">Edit Todo</h3>
+                            <form class="ui form wide" action="/todos/<%= todo.id%>/update" method="post">
+                                <div class="field">
+                                    <label>Name</label>
+                                    <input name="name" placeholder="Name" type="text" value="<%= todo.name%>">
+                                </div>
+                                <div class="field">
+                                    <label>Completed ?</label>
+                                    <div class="ui checkbox">
+                                      <% if(todo.completed == true){ %>
+
+                                        <input tabindex="0" class="hidden" type="checkbox" name="completed" checked>
+                                      <% } else { %>
+                                        <input tabindex="0" class="hidden" name="completed" type="checkbox">
+
+                                      <% }%>
+                                    </div>
+                                    <!-- <input name="completed" placeholder="Completed ?" value="<%= todo.completed %>"> -->
+                                </div>
+                                <div class="field">
+                                    <label>User Id ?</label>
+                                    <select name="user_id" class="ui search dropdown">
+                                  <option value="">Select User</option>
+                                  <% users.forEach(function(user){  %>
+
+                                    <% if(!user.User == null){ %>
+                                    <% if(user.id == todo.User.id){ %>
+
+                                      <option value="<%= user.id%>" selected="selected"><%= user.name %></option>
+                                    <% } else { %>
+
+                                      <option value="<%= user.id%>"><%= user.name %></option>
+                                    <% } %>
+                                    <% } else { %>
+
+                                      <option value="<%= user.id%>"><%= user.name %></option>
+                                      <% } %>
+
+                                  <% }); %>
+
+                                </select>
+                                </div>
+                                <button class="ui button" type="submit">Update Todo</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../partials/footer %>
+
+    </body>
+
+    </html>

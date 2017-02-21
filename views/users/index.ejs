@@ -1,0 +1,72 @@
+<% include ../partials/header %>
+<body>
+
+    <!-- Following Menu -->
+
+    <!-- Page Contents -->
+    <div class="pusher">
+
+        <div class="ui vertical stripe segment">
+            <div class="ui middle aligned stackable grid container">
+                <div class="row">
+                    <div class="two wide column">
+                        <h3 class="ui header">All Users </h3>
+
+                    </div>
+                    <div class="four wide column right">
+                        <a href="/users/create" class="ui basic button">
+                          <i class="icon user"></i>
+                          Add User
+                        </a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <% result.forEach(function(user){  %>
+                    <p>
+                      <%= user.completed %>
+
+                    </p>
+                    <% }); %>
+
+                    <table class="ui celled table" id="example">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% result.forEach(function(user){  %>
+                                <tr>
+                                    <td>
+                                        <%= user.id %>
+                                    </td>
+                                    <td>
+                                        <%= user.name %>
+                                    </td>
+                                    <td>
+                                        <%= user.email %>
+                                    </td>
+                                    <td>
+                                        <div class="ui icon buttons">
+                                            <a href="/users/<%= user.id %>" class="ui button"><i class="unhide icon"></i></a>
+                                            <a href="/users/<%= user.id %>/edit" class="ui button"><i class="edit icon"></i></a>
+                                            <a href="/users/<%= user.id %>/delete" class="ui button"><i class="trash icon"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <% include ../partials/footer %>
+
+</body>
+
+</html>
