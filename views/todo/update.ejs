@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <form class="" action="update" method="post">
+      <label for="task">New Task:</label>
+      <input type="text" name="task" value='<%= allTodoList.title %>'> <br>
+      <label for="email">Email:</label>
+      <select name="email">
+        <% for (let i = 0; i < allEmail.length; i++) { %>
+          <% if(allTodoList.UserId == allEmail[i].id) { %>
+            <option value="<%= allEmail[i].id %>" selected> <%= allEmail[i].email %> </option>
+          <% } else { %>
+            <option value="<%= allEmail[i].id %>"> <%= allEmail[i].email %> </option>
+          <% } %>
+        <% } %>
+      </select> <br>
+      <label for="task">Status</label>
+      <select name="is_complete">
+        <% if(allTodoList.is_complete == true) { %>
+          <option value="true" selected> Clear </option>
+          <option value="false"> Not yet </option>
+        <% } else { %>
+          <option value="true"> Clear </option>
+          <option value="false" selected> Not yet </option>
+        <% } %>
+      </select> <br> <br>
+      <input type="submit" name="" value="Submit">
+    </form>
+  </body>
+</html>
