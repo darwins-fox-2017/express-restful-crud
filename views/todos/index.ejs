@@ -44,10 +44,25 @@
                                         <%= item.name %>
                                     </td>
                                     <td>
-                                        <%= item.completed %>
+                                        <!-- <%= item.completed %> -->
+
+                                              <div class="ui checkbox">
+                                                <% if(item.completed == true){ %>
+
+                                                  <input tabindex="0" class="hidden" type="checkbox" checked>
+                                                <% } else { %>
+                                                  <input tabindex="0" class="hidden" type="checkbox">
+
+                                                <% }%>
+                                              </div>
                                     </td>
                                     <td>
-                                      <%= item.User.name %>
+                                      <% if(item.User == null){ %>
+
+                                      <% } else { %>
+
+                                        <%= item.User.name %>
+                                      <% } %>
 
                                     </td>
                                     <td>

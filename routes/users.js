@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
       db.Todo
     ]
   }).then(users => {
-    res.render('users/index', {result: JSON.stringify(users)})
+    res.render('users/index', {result: users})
   })
   // res.send('respond with a resource');
 });
