@@ -7,17 +7,20 @@
   <body>
     <h1>Data Memos </h1>
     <p>Welcome to Memo's</p>
-    <table style="width:50%" border="1">
+    <table style="width:100%" border="1">
       <tr>
         <th>No</th>
         <th>Memo</th>
-        <th>Status</th>
+        <th>Complete</th>
         <th>User</th>
+        <th>E-mail</th>
+        <th>Created Date</th>
         <th>Action</th>
       </tr>
+      <% let count = 1 %>
       <% result.forEach(function(item){ %>
       <tr>
-        <td><%= item.id %></td>
+        <td><%= count %></td>
         <td><%= item.title %></td>
         <td>
           <% if(item.is_complete == true) { %>
@@ -26,9 +29,12 @@
             <input type="checkbox" name="is_complete" value="true">
           <% } %>
         </td>
-        <td><%= item.user_id %></td>
+        <td><%= item.User.first_name %></td>
+        <td><%= item.User.email %></td>
+        <td><%= helper.converse(item.createdAt) %></td>
         <td><a href='/memos/edit/<%= item.id %>'>[edit]</a> - <a href='/memos/delete/<%= item.id %>'>[delete]</a></td>
       </tr>
+      <% count++ %>
       <% }); %>
     </table>
     <br>

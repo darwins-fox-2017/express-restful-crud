@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
   }).then(memos => {
     // console.log(memos);
     res.render('memos/index', {
-      result:memos
+      result: memos
     });
   });
 
@@ -37,7 +37,9 @@ router.get('/edit/:id', function(req, res, next) {
       id: req.params.id
     }
   }).then(function(item){
-    res.render('memos/edit', {memo: item})
+    db.User.findAll().then(function(users){
+      res.render('memos/edit', {memo: item, users:users})
+    })
   })
 })
 

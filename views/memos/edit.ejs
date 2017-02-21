@@ -10,12 +10,19 @@
     <form action="/memos/update/<%=memo.id%>" method="post">
       Memo :<br>
       <input type="text" name="title" value="<%=memo.title%>" placeholder="Input Memo"><br>
-      Status :<br>
+      Complete :<br>
       <% if(memo.is_complete == true) { %>
         <input type="checkbox" name="is_complete" checked>
       <% } else { %>
         <input type="checkbox" name="is_complete" value="true">
-      <% } %>
+      <% } %><br>
+      User :<br>
+      <select name="first_name">
+        <% users.forEach(function(user){ %>
+          <option value="<%= user.id %>"> <%= user.first_name %></option>
+      <%  }) %>
+      </select>
+      <br><br>
     <input type="submit" value="Submit">
     </form>
   </body>
