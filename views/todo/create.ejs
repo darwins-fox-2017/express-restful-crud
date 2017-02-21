@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>crete task</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>create task</h1>
+    <h3>user id : <%=userId%>| user name : <%=userName%></h3>
+    <form action="/todo/<%=userId%>/<%=userName%>/create" method="post">
+        title:<br>
+        <input type="text" name="title" value="">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

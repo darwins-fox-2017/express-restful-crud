@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>crete user</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>Editing User</h1>
+    <form action="/users/update" method="post">
+        name:<br>
+        <input type="hidden" name="id" value="<%=dataUsers.id%>">
+        <input type="text" name="name" value="<%=dataUsers.name%>">
+        <br> email:<br>
+        <input type="text" name="email" value="<%=dataUsers.email%>">
+        <br><br>
+        <input type="submit" value="edit">
+    </form>
+</body>
+
+</html>
