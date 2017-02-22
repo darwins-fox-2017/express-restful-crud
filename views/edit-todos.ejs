@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit TODOS</h1>
+    <form class="" action="/update/<%= todo.id %>" method="post">
+      <label>Title</label><br>
+      <input type="text" name="title" value="<%= todo.title %>" ><br>
+      <label >Email</label><br>
+      <select class="" name="email">
+      <% for(let i = 0; i < users.length; i++){ %>
+        <option value="<%= users[i].id %>"><%= users[i].email %></option>
+      <% } %>
+      </select><br>
+      <label >Complete</label><br>
+        <input type="radio" name="iscomplete" value="true" <%= todo.is_complete ? ' checked' : '' %>> Sudah<br>
+        <input type="radio" name="iscomplete" value="false" <%= (!todo.is_complete) ? ' checked' : '' %>> Belum<br>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
