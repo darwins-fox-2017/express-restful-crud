@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <% if(typeof msg !== 'undefined') { %>
+    <p><%= msg %></p>
+    <% } %>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i=0; i<Users.length; i++) { %>
+          <tr>
+            <td><%= Users[i].id %></td>
+            <td><%= Users[i].email %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table
+
+    <br>
+    <p>Create Email</p>
+    <form class="" action="/viewer" method="post">
+      <label>Email : <input type="text" name="email" value=""></label><br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Task</th>
+          <th>Done</th>
+          <th>Email</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+      <p>Create Task</p>
+      <% for(let i=0; i<Todos.length; i++) { %>
+        <tr>
+          <td><%= Todos[i].id %></td>
+          <td><%= Todos[i].title %></td>
+          <td><%= Todos[i].is_complete %></td>
+          <td><%= Todos[i].User.email %></td>
+          <td><a href="/todo/<%= Todos[i].id %>/delete" onclick="return confirm('are you sure want to delete this Task : <%= Todos[i].title %> ?')">delete</a> | <a href="/todo/<%= Todos[i].id %>/edit">edit</a>
+            <% if (!Todos[i].is_complete) { %>
+              | <a href="/todo/<%= Todos[i].id %>/complete">complete</a>
+            <% } %>
+          </td>
+        </tr>
+      <% } %>
+      </tbody>
+    </table>
+    <form class="" action="/todo" method="post">
+      <label>Task Title : <input type="text" name="title" value=""></label><br>
+      <label>User Email :
+      <select name="UserId">
+        <% for(let i=0; i<Users.length; i++) { %>
+        <option value="<%= Users[i].id %>"><%= Users[i].email %></opttion>
+        <% } %>
+      </select>
+    </label><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
