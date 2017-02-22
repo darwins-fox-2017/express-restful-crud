@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit todo</title>
+  </head>
+  <body>
+    <form class="" action="/todo/update" method="post">
+      <input type="hidden" name="id" value="<%= Todo.id %>">
+      <label>Title : <input type="text" name="title" value="<%= Todo.title %>"></label><br>
+      <label>Is Complete : <input type="checkbox" name="is_complete" <% if (Todo.is_complete == true) {"checked"}  %>></label><br>
+      <label>User Email :
+      <select name="UserId">
+        <% for(let i=0; i<Users.length; i++) { %>
+          <% if (Users[i].id === Todo.UserId) {%>
+            <option value="<%= Users[i].id %>" selected> <%= Users[i].email %>  </opttion>
+          <% } else { %>
+            <option value="<%= Users[i].id %>" ><%= Users[i].email %></opttion>
+          <% } %>
+        <% } %>
+      </select>
+      </label><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

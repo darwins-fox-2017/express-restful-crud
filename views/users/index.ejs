@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <% if(typeof msg !== 'undefined') { %>
+    <p><%= msg %></p>
+    <% } %>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i=0; i<Users.length; i++) { %>
+          <tr>
+            <td><%= Users[i].id %></td>
+            <td><%= Users[i].email %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table
+
+    <br>
+    <p>Create Email</p>
+    <form class="" action="/viewer" method="post">
+      <label>Email : <input type="text" name="email" value=""></label><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
+</html>
