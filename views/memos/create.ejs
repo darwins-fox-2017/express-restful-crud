@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input Memo</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Input Memo's</h1>
+    <p>Input Your Data</p>
+    <form action="create" method="post">
+      Memo :<br>
+      <input type="text" name="title" placeholder="Input Your Memo"><br>
+      Complete :<br>
+      <input type="checkbox" name="is_complete"><br><br>
+      User : <br>
+      <select id="first_name" name="user_id">
+        <option id="first_name" value="">Select User</option>
+        <% users.forEach(function(user){ %>
+          <option id="first_name" value="<%= user.id %>"> <%= user.first_name %></option>
+      <%  }); %>
+    </select><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>

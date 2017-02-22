@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Edit Memo</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Edit Memo</h1>
+    <p>Input Your Data</p>
+    <form action="/memos/update/<%=memo.id%>" method="post">
+      Memo :<br>
+      <input type="text" name="title" value="<%=memo.title%>" placeholder="Input Memo"><br>
+      Complete :<br>
+      <% if(memo.is_complete == true) { %>
+        <input type="checkbox" name="is_complete" checked>
+      <% } else { %>
+        <input type="checkbox" name="is_complete" value="true">
+      <% } %><br>
+      User :<br>
+      <select id="first_name" name="user_id">
+        <% users.forEach(function(user){ %>
+          <%if(user.id == memo.User.id) { %>
+      <option id="first_name" value="<%= user.id %>" selected> <%= user.first_name %></option>
+      <% } else { %>
+      <option id="first_name" value="<%= user.id %>"> <%= user.first_name %></option>
+      <% } %>
+      <%  }) %>
+      </select>
+      <br><br>
+    <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
