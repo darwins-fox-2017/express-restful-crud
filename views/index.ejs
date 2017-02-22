@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %> Apps</p>
+    <div class="row">
+      <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Create</th>
+          <th>Complete</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+        <% for(let i = 0; i < todos.length; i++){ %>
+          <tr>
+            <td><%= todos[i].id %></td>
+            <td><%= todos[i].title %></td>
+            <td><%= todos[i].createdAt.toUTCString() %></td>
+            <td><%= todos[i].is_complete %></td>
+            <td><%= todos[i]["User.email"] %></td>
+            <td>
+              <a href="/update/<%= todos[i].id %>">Update</a>
+              <a href="/delete/<%= todos[i].id %>" onclick="return confirm('Are you sure?')"> Delete</a>
+            </td>
+          </tr>
+        <% } %>
+      </table>
+    </div><br>
+    <div class="row">
+      <form class="" action="/" method="post">
+        <label >Title</label><br>
+        <input type="text" name="title"><br>
+        <label >Email</label><br>
+        <select class="" name="email">
+        <% for(let i = 0; i < users.length; i++){ %>
+          <option value="<%= users[i].id %>"><%= users[i].email %></option>
+        <% } %>
+      </select><br>
+        <label >Complete</label><br>
+          <input type="radio" name="iscomplete" value="true"> Sudah<br>
+          <input type="radio" name="iscomplete" value="false" checked > Belum<br>
+        <br>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>
