@@ -5,7 +5,9 @@ let db = require('../models');
 
 /* GET users listing. */
 router.get('/create', function(req, res, next) {
-  res.render('memos/create');
+  db.User.findAll().then(function(users) {
+res.render('memos/create', {users: users})  })
+
 });
 
 router.get('/', function(req, res, next) {
@@ -33,12 +35,14 @@ router.post('/create', function(req, res, next) {
 
 router.get('/edit/:id', function(req, res, next) {
   db.Memo.find({
+    include: [db.User],
     where: {
       id: req.params.id
     }
   }).then(function(item){
+    // console.log(item);
     db.User.findAll().then(function(users){
-      res.render('memos/edit', {memo: item, users:users})
+      res.render('memos/edit', {memo: item, users: users})
     })
   })
 })

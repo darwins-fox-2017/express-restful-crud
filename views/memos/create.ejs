@@ -12,6 +12,13 @@
       <input type="text" name="title" placeholder="Input Your Memo"><br>
       Complete :<br>
       <input type="checkbox" name="is_complete"><br><br>
+      User : <br>
+      <select id="user_id">
+        <option id="user_id" value="">Select User</option>
+        <% users.forEach(function(user){ %>
+          <option id="user_id" value="<%= user.id %>"> <%= user.first_name %></option>
+      <%  }); %>
+    </select><br><br>
       <input type="submit" value="Submit">
     </form>
   </body>

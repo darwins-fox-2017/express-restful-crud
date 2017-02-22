@@ -17,9 +17,13 @@
         <input type="checkbox" name="is_complete" value="true">
       <% } %><br>
       User :<br>
-      <select name="first_name">
+      <select id="first_name">
         <% users.forEach(function(user){ %>
-          <option value="<%= user.id %>"> <%= user.first_name %></option>
+          <%if(user.id == memo.User.id) { %>
+      <option id="first_name" value="<%= user.id %>" selected> <%= user.first_name %></option>
+      <% } else { %>
+      <option id="first_name" value="<%= user.id %>"> <%= user.first_name %></option>
+      <% } %>
       <%  }) %>
       </select>
       <br><br>
