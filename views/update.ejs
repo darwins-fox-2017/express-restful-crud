@@ -25,8 +25,12 @@
             <label for="email">Email:</label>
             <select type="text" name="emailId"><br>
               <% for (var i=0;i < users.length; i++) {%>
-                <option value="<%= users[i].id %>"><%= users[i].email %></option>
+                <% if(users[i].id == data.userId) {%>
+                  <option value="<%= users[i].id %>" selected><%= users[i].email %></option>
+                <%} else {%>
+                  <option value="<%= users[i].id %>"><%= users[i].email %></option>
               <% } %>
+            <% } %>
             </select>
           </div>
         <input type="submit" value="Submit">

@@ -53,8 +53,8 @@ router.get('/delete/:id', function(req, res){
   models.todo.findById(req.params.id).then(function(todos){
     if(todos){
       todos.destroy({where:{todos:req.body.id}})
+      res.redirect('/')
     }
-    res.redirect('/')
   })
 });
 
