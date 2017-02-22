@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1>FORM UPDATE DATA</h1>
+        <form action="/update/<%= data.id %>" method="post">
+          <div class="form-group">
+            <input type="hidden" name="id" value="<%= data.id %>">
+          </div>
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" name="title" value="<%= data.title %>">
+          </div>
+          <div class="form-group">
+            <label for="is_complete">Complete:</label>
+            <input type="checkbox" name="is_complete" value="true"<%= data.is_complete ? ' checked' : '' %>/>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <select type="text" name="emailId"><br>
+              <% for (var i=0;i < users.length; i++) {%>
+                <% if(users[i].id == data.userId) {%>
+                  <option value="<%= users[i].id %>" selected><%= users[i].email %></option>
+                <%} else {%>
+                  <option value="<%= users[i].id %>"><%= users[i].email %></option>
+              <% } %>
+            <% } %>
+            </select>
+          </div>
+        <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
